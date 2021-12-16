@@ -1,0 +1,6 @@
+/.data
+/.gitlab-runner
+.ash_history
+.bash_history
+/builds
+.env.local

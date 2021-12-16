@@ -1,0 +1,51 @@
+default_language_version:
+    python: python3.9
+
+repos:
+  - repo: https://github.com/psf/black
+    rev: stable
+    hooks:
+      - id: black
+        args: [--config=pyproject.toml]
+        stages: [manual, push]
+        files: '.*\.py$'
+
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.4
+    hooks:
+      - id: flake8
+        stages: [manual, push]
+        additional_dependencies: [flake8-bugbear]
+
+  - repo: github.com/PyCQA/isort
+    rev: 5.7.0
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.790
+    hooks:
+      - id: mypy
+        args: [--no-strict-optional, --ignore-missing-imports]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+    - id: end-of-file-fixer
+      stages: [manual, push]
+      files: '.*\.py$'
+    - id: fix-encoding-pragma
+      stages: [manual, push]
+      args: [--remove]
+      files: '.*\.py$'
+    - id: trailing-whitespace
+      stages: [manual, push]
+      files: '.*\.py$'
+    - id: requirements-txt-fixer
+      stages: [manual, push]
+    - id: check-toml
+      stages: [manual, push]
+      files: '.*\.toml$'
+    - id: check-yaml
+      stages: [manual, push]
+      files: '.*\.yaml$'

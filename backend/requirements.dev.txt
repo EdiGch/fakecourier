@@ -1,0 +1,6 @@
+coverage[toml]<5  # PyCharm fails tests with version 5
+flake8
+flake8-bugbear
+pre-commit
+pytest
+pytest-docker-compose==3.1.2
